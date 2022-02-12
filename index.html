@@ -27,12 +27,14 @@
     <div class="container">
       <form class="col-md-6 m-auto py-5">
         <div class="input-group mb-3">
+          <!-- get user city name  -->
           <input
             type="text"
             class="form-control"
             placeholder="Enter a location for Weather ..."
             id="city"
           />
+          <!-- search button -->
           <div class="input-group-append">
             <button type="button" id="search" class="btn btn-danger">
               Search
@@ -40,6 +42,7 @@
           </div>
         </div>
       </form>
+      <!-- show details weather information -->
       <div class="weather-status text-white text-center">
         <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="" />
         <h1 id="cityName"></h1>
@@ -47,27 +50,6 @@
         <h1 class="lead" id="clouds"></h1>
       </div>
     </div>
-    <script>
-      document.getElementById("search").addEventListener("click", function () {
-        const city = document.getElementById("city").value;
-        const apiKey = `4abaf6d9e96b2b35e70d16208d39aa08`;
-        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => {
-            try {
-              document.getElementById("cityName").innerHTML = data.name;
-              document.getElementById("deg").innerHTML = data.main.temp;
-              document.getElementById("clouds").innerHTML =
-                data.weather[0].description;
-            } catch (e) {
-              alert("Please enter a valid city name");
-              document.getElementById("cityName").innerHTML = "";
-              document.getElementById("deg").innerHTML = "";
-              document.getElementById("clouds").innerHTML = "";
-            }
-          });
-      });
-    </script>
+    <script src="js/api.js"></script>
   </body>
 </html>
