@@ -1,4 +1,4 @@
-﻿# Check weather
+# Check weather
 
 ### build with
 
