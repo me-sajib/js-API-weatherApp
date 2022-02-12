@@ -47,5 +47,27 @@
         <h1 class="lead" id="clouds"></h1>
       </div>
     </div>
+    <script>
+      document.getElementById("search").addEventListener("click", function () {
+        const city = document.getElementById("city").value;
+        const apiKey = `4abaf6d9e96b2b35e70d16208d39aa08`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            try {
+              document.getElementById("cityName").innerHTML = data.name;
+              document.getElementById("deg").innerHTML = data.main.temp;
+              document.getElementById("clouds").innerHTML =
+                data.weather[0].description;
+            } catch (e) {
+              alert("Please enter a valid city name");
+              document.getElementById("cityName").innerHTML = "";
+              document.getElementById("deg").innerHTML = "";
+              document.getElementById("clouds").innerHTML = "";
+            }
+          });
+      });
+    </script>
   </body>
 </html>
